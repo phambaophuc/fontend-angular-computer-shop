@@ -29,6 +29,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductComponent } from './components/product/product.component';
 import { SearchProductComponent } from './components/search-product/search-product.component';
+import { SearchButtonProductComponent } from './components/search-button-product/search-button-product.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { SearchProductComponent } from './components/search-product/search-produ
         AboutComponent,
         ProductComponent,
         SearchProductComponent,
+        SearchButtonProductComponent,
     ],
     imports: [
         BrowserModule,

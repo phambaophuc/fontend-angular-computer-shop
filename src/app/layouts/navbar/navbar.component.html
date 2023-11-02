@@ -11,7 +11,7 @@
 
                 <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li *ngFor="let category of categories">
-                        <a class="dropdown-item" routerLink="products/search/{{ category.name }}">{{ category.name }}</a>
+                        <a class="dropdown-item" routerLink="/category/{{ category.name }}">{{ category.name }}</a>
                     </li>
                 </ul>
             </li>

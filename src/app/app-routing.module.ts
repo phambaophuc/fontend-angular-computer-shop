@@ -5,10 +5,12 @@ import { ProductComponent } from './components/product/product.component';
 import { SearchProductComponent } from './components/search-product/search-product.component';
 
 const routes: Routes = [
-    { path: '', component: ProductComponent },
     { path: 'products', component: ProductComponent },
-    { path: 'about', component: AboutComponent },
-    { path: 'products/search/:id', component: SearchProductComponent }
+    { path: 'category/:id', component: SearchProductComponent },
+    { path: 'search/:keyword', component: SearchProductComponent },
+    { path: '', redirectTo: '/products', pathMatch: 'full' },
+    { path: '**', redirectTo: '/products', pathMatch: 'full' },
+    { path: 'about', component: AboutComponent }
 ];
 
 @NgModule({

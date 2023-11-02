@@ -16,6 +16,12 @@ export class ProductService {
     }
 
     getProductsByCategory(name: string): Observable<any> {
-        return this.httpClient.get(`${this.baseUrl}/find-by-category/${name}`);
+        const searchUrl = `${this.baseUrl}/category/${name}`;
+        return this.httpClient.get(searchUrl);
+    }
+
+    searchProduct(keyword: string): Observable<any> {
+        const searchUrl = `${this.baseUrl}/search?name=${keyword}`;
+        return this.httpClient.get(searchUrl);
     }
 }

@@ -15,7 +15,10 @@ export class SearchProductComponent implements OnInit {
     products: Product[] = [];
     categories: Category[] = [];
 
+    searchMode?: boolean;
+
     currentCategoryId: string = '';
+    previousKeyword: string = '';
 
     constructor(
         private route: ActivatedRoute,
@@ -32,6 +35,31 @@ export class SearchProductComponent implements OnInit {
     }
 
     listProducts() {
+        this.searchMode = this.route.snapshot.paramMap.has('keyword');
+
+        if (this.searchMode) {
+            this.handleSearchProduct();
+        } else {
+            this.handleProductsCategory();
+        }
+    }
+
+    handleSearchProduct() {
+        const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+
+        this.previousKeyword = theKeyword;
+
+        this.productService.searchProduct(theKeyword).subscribe({
+            next: data => {
+                this.products = data;
+            },
+            error: err => {
+                console.error(err);
+            }
+        })
+    }
+
+    handleProductsCategory() {
         const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
         if (hasCategoryId) {
